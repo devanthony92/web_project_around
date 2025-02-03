@@ -1,0 +1,37 @@
+.card {
+  background-color: #fff;
+  width: 280px;
+  height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 280px;
+  height: 280px;
+}
+
+.card__container {
+  margin: 0;
+  color: #000;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  grid-template-rows: 1fr;
+  justify-items: start;
+}
+
+.card__name {
+  margin: 24px 0 24px 24px;
+  max-width: 220px;
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__like_logo {
+  margin: auto 19px auto auto;
+}

@@ -2,6 +2,7 @@
   display: flex;
   max-height: 120px;
   align-items: center;
+  width: 95%;
 }
 
 .profile__photo {
@@ -12,13 +13,16 @@
 }
 
 .profile__profile_info {
-  position: relative;
   width: 415px;
-  height: 77px;
+  height: 90px;
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
 }
 
 .profile__title {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -28,6 +32,8 @@
   font-size: 2.6rem;
   font-weight: 500;
   line-height: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .profile__profesion {
@@ -54,4 +60,60 @@
   background-color: #000;
   border: 2px solid #ffffff;
   cursor: pointer;
+}
+
+.profile__add_button:hover {
+  opacity: 60%;
+}
+
+@media screen and (min-width: 620px) and (max-width: 880px) {
+  .profile__name {
+    min-width: 200px;
+    max-height: 84px;
+  }
+  .profile__edit {
+    margin-right: 20px;
+  }
+  .profile__add_button {
+    min-width: 50px;
+  }
+}
+
+@media screen and (max-width: 619px) {
+  .profile {
+    display: flex;
+    width: 80%;
+    min-height: 300px;
+    max-height: none;
+    align-items: center;
+    flex-direction: column;
+  }
+  .profile__photo {
+    margin-right: 0;
+  }
+  .profile__profile_info {
+    max-width: 100%;
+  }
+  .profile__title {
+    width: 100%;
+  }
+  .profile__name {
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+  }
+  .profile__profesion {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    margin: 15px auto 20px;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+  }
+  .profile__add_button {
+    margin-top: 60px;
+    margin-left: none;
+    width: 100%;
+  }
 }

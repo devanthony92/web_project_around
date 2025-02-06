@@ -1,20 +1,20 @@
-let button_edit = document.querySelector(".profile__edit");
-let button_add = document.querySelector(".profile__add_button");
-let button_close = document.querySelector(".popup__cerrar");
-let button_save = document.querySelector(".popup__button_save");
+let button_edit = document.querySelector(".main__profile_edit");
+let button_add = document.querySelector(".main__profile_add_button");
+let button_close = document.querySelector(".dialog__cerrar");
+let button_save = document.querySelector(".dialog__button_save");
 let like = document.querySelector(".card__like");
-let popup = document.querySelector(".popup");
-let name_profile = document.querySelector(".profile__name");
-let about__profile = document.querySelector(".profile__profesion");
-let input_name = document.querySelector(".popup__input_name");
-let input_about = document.querySelector(".popup__input_about");
-let popup__form = document.querySelector(".popup__form");
+let dialog = document.querySelector(".dialog");
+let name_profile = document.querySelector(".main__profile_name");
+let about__profile = document.querySelector(".main__profile_profesion");
+let input_name = document.querySelector(".dialog__input_name");
+let input_about = document.querySelector(".dialog__input_about");
+let dialog__form = document.querySelector(".dialog__form");
 
 input_name.placeholder = name_profile.textContent;
 input_about.placeholder = about__profile.textContent;
 
-function open_popup() {
-  popup.classList.add("popup_opened");
+function open_dialog() {
+  dialog.classList.add("dialog_opened");
 }
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -25,24 +25,24 @@ function handleProfileFormSubmit(evt) {
   if (input_about.value != "") {
     about__profile.textContent = input_about.value;
   }
-  popup.classList.remove("popup_opened");
+  dialog.classList.remove("dialog_opened");
 }
 function checkInputFilled() {
   if (input_name.value.trim() != "" || input_about.value.trim() != "") {
-    button_save.classList.add("popup__button_save_filled");
+    button_save.classList.add("dialog__button_save_filled");
   } else {
-    button_save.classList.remove("popup__button_save_filled");
+    button_save.classList.remove("dialog__button_save_filled");
   }
 }
 
-button_edit.addEventListener("click", open_popup);
+button_edit.addEventListener("click", open_dialog);
 input_name.addEventListener("input", checkInputFilled);
 input_about.addEventListener("input", checkInputFilled);
 button_close.addEventListener("click", function () {
   input_name.value = "";
   input_about.value = "";
-  button_save.classList.remove("popup__button_save_filled");
-  popup.classList.remove("popup_opened");
+  button_save.classList.remove("dialog__button_save_filled");
+  dialog.classList.remove("dialog_opened");
 });
 button_save.addEventListener("click", handleProfileFormSubmit);
 button_add.addEventListener("click", function () {

@@ -1,4 +1,4 @@
-.popup {
+.dialog {
   display: none;
   width: 430px;
   height: 330px;
@@ -6,8 +6,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  gap: 0px;
-  opacity: 0px;
+  border: none;
   background-color: #fff;
   opacity: 100%;
   border-radius: 5%;
@@ -15,15 +14,15 @@
   box-sizing: border-box;
 }
 
-.popup_opened {
+.dialog_opened {
   display: block;
 }
 
-.popup__form {
+.dialog__form {
   display: block;
 }
 
-.popup__title {
+.dialog__title {
   font-family: Inter;
   font-size: 1.5rem;
   font-weight: 900;
@@ -33,7 +32,7 @@
   margin-bottom: 40px;
 }
 
-.popup__input_name {
+.dialog__input_name {
   width: 100%;
   padding-bottom: 13px;
   margin-bottom: 30px;
@@ -46,7 +45,7 @@
   border-bottom: 1px solid #c4c4c4;
 }
 
-.popup__input_about {
+.dialog__input_about {
   width: 100%;
   padding-bottom: 13px;
   margin-bottom: 40px;
@@ -59,7 +58,7 @@
   border-bottom: 1px solid #c4c4c4;
 }
 
-.popup__button_save {
+.dialog__button_save {
   width: 100%;
   height: 50px;
   background-color: #fff;
@@ -69,16 +68,16 @@
   cursor: pointer;
 }
 
-.popup__button_save_filled {
+.dialog__button_save_filled {
   border: 1px solid #000;
   color: #fff;
   background-color: #000;
 }
 
-.popup__button_save_filled:hover {
+.dialog__button_save_filled:hover {
   opacity: 80%;
 }
-.popup__cerrar {
+.dialog__cerrar {
   position: absolute;
   display: flex;
   width: 40px;
@@ -92,16 +91,16 @@
   cursor: pointer;
 }
 
-.popup__cerrar:hover {
+.dialog__cerrar:hover {
   opacity: 60%;
 }
 
 @media screen and (max-width: 579px) {
-  .popup {
+  .dialog {
     width: 280px;
     height: 420px;
   }
-  .popup__cerrar {
+  .dialog__cerrar {
     width: 20px;
     height: 20px;
     top: -20px;

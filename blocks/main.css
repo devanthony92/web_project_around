@@ -82,7 +82,7 @@
 @media screen and (max-width: 619px) {
   .main {
     display: flex;
-    width: 80%;
+    width: 100%;
     min-height: 300px;
     max-height: none;
     align-items: center;

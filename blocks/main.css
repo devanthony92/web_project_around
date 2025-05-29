@@ -96,11 +96,18 @@
   }
   .main__profile-title {
     width: 100%;
+    display: grid;
+    grid-template-columns: 230px 30px;
+    justify-content: center;
+  }
+  .main__profile-edit {
+    margin: auto;
   }
   .main__profile-name {
     text-overflow: ellipsis;
     white-space: wrap;
     overflow: hidden;
+    text-align: center;
   }
   .main__profile-profesion {
     display: flex;

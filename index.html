@@ -26,14 +26,18 @@
         />
         <div class="main__profile-info">
           <div class="main__profile-title">
-            <h2 class="main__profile-name">Jacques Cousteau</h2>
-            <button class="main__profile-edit">
+            <h2 class="main__profile-name" id="profileName">
+              Jacques Cousteau
+            </h2>
+            <button class="main__profile-edit" id="mainProfileEdit">
               <img src="images/edit__button.svg" alt="edit button" />
             </button>
           </div>
-          <h4 class="main__profile-profesion">Explorador</h4>
+          <h4 class="main__profile-profesion" id="profileProfesion">
+            Explorador
+          </h4>
         </div>
-        <button class="main__profile-add-button">
+        <button class="main__profile-add-button" id="addButton">
           <img
             class="main__profile-add-button-img"
             src="images/add__button.svg"
@@ -41,19 +45,58 @@
           />
         </button>
       </main>
-      <dialog class="dialog popups">
+      <dialog class="popups dialog" id="formEditPopup">
         <h3 class="dialog__title">Editar perfil</h3>
-        <button class="dialog__cerrar">
+        <button class="dialog__cerrar" id="formEditButtonClose">
           <img class="dialog__cerrar-img" src="images/Close_Icon.png" alt="" />
         </button>
-        <form action="#" class="dialog__form">
-          <input type="text" class="dialog__input-name" placeholder="Nombre" />
+        <form action="#" class="dialog__form" id="formEdit">
           <input
+            id="inputEditName"
+            type="text"
+            class="dialog__input-name"
+            placeholder="Nombre"
+          />
+          <input
+            id="inputEditAbout"
             type="text"
             class="dialog__input-about"
             placeholder="Acerca de mí"
           />
-          <button type="submit" class="dialog__button-save">Guardar</button>
+          <button
+            type="submit"
+            class="dialog__button-save"
+            id="formEditButtonSave"
+          >
+            Guardar
+          </button>
+        </form>
+      </dialog>
+      <dialog class="popups dialog" id="popupAddPlace">
+        <h3 class="dialog__title">Nuevo Lugar</h3>
+        <button class="dialog__cerrar" id="addPlaceButtonClose">
+          <img class="dialog__cerrar-img" src="images/Close_Icon.png" alt="" />
+        </button>
+        <form action="#" class="dialog__form" id="formAddPlace">
+          <input
+            id="inputAddTitle"
+            type="text"
+            class="dialog__input-name"
+            placeholder="Titulo"
+          />
+          <input
+            id="inputAddlink"
+            type="text"
+            class="dialog__input-about"
+            placeholder="Enlace a la imagen"
+          />
+          <button
+            id="ButtonSavePlace"
+            type="submit"
+            class="dialog__button-save dialog__button-save-filled"
+          >
+            Crear
+          </button>
         </form>
       </dialog>
       <section class="elements">

@@ -1,14 +1,20 @@
-let button_edit = document.querySelector(".main__profile-edit");
-let button_add = document.querySelector(".main__profile-add-button");
-let button_close = document.querySelector(".dialog__cerrar");
-let button_save = document.querySelector(".dialog__button-save");
+let button_edit = document.querySelector("#mainProfileEdit");
+let button_add = document.querySelector("#addButton");
+let button_close = document.querySelector("#formEditButtonClose");
+let button_closeAdd = document.querySelector("#addPlaceButtonClose");
+let button_save = document.querySelector("#formEditButtonSave");
+let button_save_place = document.querySelector("#ButtonSavePlace");
 let like = document.querySelector(".card__like");
-let dialog = document.querySelector(".dialog");
-let name_profile = document.querySelector(".main__profile-name");
-let about__profile = document.querySelector(".main__profile-profesion");
-let input_name = document.querySelector(".dialog__input-name");
-let input_about = document.querySelector(".dialog__input-about");
-let dialog__form = document.querySelector(".dialog__form");
+let dialog = document.querySelector("#formEditPopup");
+let addPLace = document.querySelector("#popupAddPlace");
+let name_profile = document.querySelector("#profileName");
+let about__profile = document.querySelector("#profileProfesion");
+let input_name = document.querySelector("#inputEditName");
+let input_about = document.querySelector("#inputEditAbout");
+let dialog__form = document.querySelector("#formEdit");
+let form__addPLace = document.querySelector("#formAddPlace");
+let input_title = document.querySelector("#inputAddTitle");
+let input_link = document.querySelector("#inputAddlink");
 
 input_name.placeholder = name_profile.textContent;
 input_about.placeholder = about__profile.textContent;
@@ -45,5 +51,8 @@ button_close.addEventListener("click", function () {
 });
 button_save.addEventListener("click", handleProfileFormSubmit);
 button_add.addEventListener("click", function () {
-  console.log("add button");
+  addPLace.classList.add("dialog__opened");
+});
+button_closeAdd.addEventListener("click", function () {
+  addPLace.classList.remove("dialog__opened");
 });

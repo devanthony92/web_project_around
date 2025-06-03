@@ -93,12 +93,12 @@
 @media screen and (max-width: 579px) {
   .dialog {
     width: 280px;
-    height: 420px;
+    height: 320px;
   }
   .dialog__cerrar {
     width: 20px;
     height: 20px;
-    top: -20px;
-    right: -20px;
+    top: -40px;
+    right: 10px;
   }
 }

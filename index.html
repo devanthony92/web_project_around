@@ -45,7 +45,11 @@
           />
         </button>
       </main>
-      <dialog class="popups dialog" id="formEditPopup">
+      <section class="elements" id="elementsSection"></section>
+      <footer class="footer">
+        <p class="footer__copyright">&#169; 2025 Around The U.S.</p>
+      </footer>
+      <dialog class="popup dialog" id="formEditPopup">
         <h3 class="dialog__title">Editar perfil</h3>
         <button class="dialog__cerrar" id="formEditButtonClose">
           <img class="dialog__cerrar-img" src="images/Close_Icon.png" alt="" />
@@ -72,7 +76,7 @@
           </button>
         </form>
       </dialog>
-      <dialog class="popups dialog" id="popupAddPlace">
+      <dialog class="popup dialog" id="popupAddPlace">
         <h3 class="dialog__title">Nuevo Lugar</h3>
         <button class="dialog__cerrar" id="addPlaceButtonClose">
           <img class="dialog__cerrar-img" src="images/Close_Icon.png" alt="" />
@@ -99,14 +103,19 @@
           </button>
         </form>
       </dialog>
-      <section class="elements" id="elementsSection"></section>
-      <footer class="footer">
-        <p class="footer__copyright">&#169; 2025 Around The U.S.</p>
-      </footer>
+      <dialog class="popup popup__image" id="popupImage"></dialog>
     </div>
-    <template
+    <template id="templateImage">
+      <button class="dialog__cerrar">
+        <img class="dialog__cerrar-img" src="images/Close_Icon.png" />
+      </button>
+      <img class="popup__image_full" src="" alt="" />
+      <h3 class="popup__nameImage"></h3>
+    </template>
+    <template id="templateCard"
       ><div class="card">
         <img class="card__img" src="" />
+        <button class="card__delete"></button>
         <div class="card__container">
           <h3 class="card__name"></h3>
           <button class="card__like"></button>

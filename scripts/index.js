@@ -1,20 +1,23 @@
-let button_edit = document.querySelector("#mainProfileEdit");
-let button_add = document.querySelector("#addButton");
-let button_close = document.querySelector("#formEditButtonClose");
-let button_closeAdd = document.querySelector("#addPlaceButtonClose");
-let button_save = document.querySelector("#formEditButtonSave");
-let button_save_place = document.querySelector("#ButtonSavePlace");
-let dialog = document.querySelector("#formEditPopup");
-let addPLace = document.querySelector("#popupAddPlace");
-let name_profile = document.querySelector("#profileName");
-let about__profile = document.querySelector("#profileProfesion");
-let input_name = document.querySelector("#inputEditName");
-let input_about = document.querySelector("#inputEditAbout");
-let dialog__form = document.querySelector("#formEdit");
-let form__addPLace = document.querySelector("#formAddPlace");
-let input_title = document.querySelector("#inputAddTitle");
-let input_link = document.querySelector("#inputAddlink");
-let elementSection = document.querySelector("#elementsSection");
+const button_edit = document.querySelector("#mainProfileEdit");
+const button_add = document.querySelector("#addButton");
+const button_close = document.querySelector("#formEditButtonClose");
+const button_closeAdd = document.querySelector("#addPlaceButtonClose");
+const button_save = document.querySelector("#formEditButtonSave");
+const button_save_place = document.querySelector("#ButtonSavePlace");
+const dialog = document.querySelector("#formEditPopup");
+const addPLace = document.querySelector("#popupAddPlace");
+const popupImg = document.querySelector("#popupImage");
+const name_profile = document.querySelector("#profileName");
+const about__profile = document.querySelector("#profileProfesion");
+const input_name = document.querySelector("#inputEditName");
+const input_about = document.querySelector("#inputEditAbout");
+const dialog__form = document.querySelector("#formEdit");
+const form__addPLace = document.querySelector("#formAddPlace");
+const input_title = document.querySelector("#inputAddTitle");
+const input_link = document.querySelector("#inputAddlink");
+const cardTemplate = document.querySelector("#templateCard");
+const imageTemplate = document.querySelector("#templateImage");
+const elementSection = document.querySelector("#elementsSection");
 
 input_name.placeholder = name_profile.textContent;
 input_about.placeholder = about__profile.textContent;
@@ -75,37 +78,31 @@ function checkInputFilled() {
   }
 }
 function createCard(cardTitle, cardLink) {
-  const divCard = document.createElement("div");
-  const imgCard = document.createElement("img");
-  const divInfo = document.createElement("div");
-  const cardName = document.createElement("h3");
-  const infoName = document.createTextNode(cardTitle);
-  const buttonLike = document.createElement("button");
-  const buttonDelete = document.createElement("button");
+  const cloneCard = cardTemplate.content.cloneNode(true);
 
-  divCard.classList.add("card");
-  imgCard.classList.add("card__img");
-  divInfo.classList.add("card__container");
-  cardName.classList.add("card__name");
-  buttonLike.classList.add("card__like");
-  buttonDelete.classList.add("card__delete");
+  const imgCard = cloneCard.querySelector(".card__img");
+  const nameCard = cloneCard.querySelector(".card__name");
+
   imgCard.src = cardLink;
-
-  cardName.appendChild(infoName);
-  divInfo.appendChild(cardName);
-  divInfo.appendChild(buttonLike);
-  divCard.appendChild(imgCard);
-  divCard.appendChild(buttonDelete);
-  divCard.appendChild(divInfo);
-  elementSection.prepend(divCard);
+  nameCard.textContent = cardTitle;
+  elementSection.prepend(cloneCard);
 
   const like = document.querySelector(".card__like");
   like.addEventListener("click", (evt) => {
     evt.target.classList.toggle("card__like_active");
   });
+
   const deleteListener = document.querySelector(".card__delete");
-  deleteListener.addEventListener("click", () => {
-    divCard.remove();
+  deleteListener.addEventListener("click", (evt) => {
+    evt.target.parentNode.remove();
+  });
+
+  imgCard.addEventListener("click", (evt) => {
+    while (popupImg.firstChild) {
+      popupImg.removeChild(popupImg.firstChild);
+    }
+    createImgPopup(evt.target.parentNode);
+    popupImg.classList.add("dialog__opened");
   });
 }
 function handleAddFormSubmit(evt) {
@@ -120,6 +117,23 @@ function handleAddFormSubmit(evt) {
   }
   createCard(var1, var2);
   closeAddFuntion();
+}
+
+function createImgPopup(var1) {
+  const cloneImage = imageTemplate.content.cloneNode(true);
+  const imgFullScr = cloneImage.querySelector(".popup__image_full");
+  const nameImage = cloneImage.querySelector(".popup__nameImage");
+  const btnClose = cloneImage.querySelector(".dialog__cerrar-img");
+  const Name = var1.querySelector(".card__name");
+  const Link = var1.querySelector(".card__img");
+  nameImage.textContent = Name.textContent;
+  imgFullScr.src = Link.src;
+
+  popupImg.appendChild(cloneImage);
+  console.log(popupImg.childNodes);
+  btnClose.addEventListener("click", () => {
+    popupImg.classList.remove("dialog__opened");
+  });
 }
 
 button_edit.addEventListener("click", open_dialog);

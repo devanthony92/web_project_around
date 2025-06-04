@@ -25,7 +25,7 @@ Este proyecto fue desarrollado por:
 
 - [Anthony Martinez Amell](https://github.com/devanthony92)
 
-Como parte de un proyecto práctico como estudiante de desarrollo web de TripleTen. Si tienes preguntas o comentarios, no dudes en ponerte en contacto al correo electrónico: fatimapolgar2001@gmail.com
+Como parte de un proyecto práctico como estudiante de desarrollo web de TripleTen. Si tienes preguntas o comentarios, no dudes en ponerte en contacto al correo electrónico: aenriquemartinez@gmail.com
 
 ## Visita la web:
 

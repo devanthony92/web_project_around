@@ -22,8 +22,6 @@
 
 .main__profile-title {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .main__profile-name {

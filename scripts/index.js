@@ -81,20 +81,28 @@ function createCard(cardTitle, cardLink) {
   const cardName = document.createElement("h3");
   const infoName = document.createTextNode(cardTitle);
   const buttonLike = document.createElement("button");
+  const buttonDelete = document.createElement("button");
 
   divCard.classList.add("card");
   imgCard.classList.add("card__img");
   divInfo.classList.add("card__container");
   cardName.classList.add("card__name");
   buttonLike.classList.add("card__like");
+  buttonDelete.classList.add("card__delete");
   imgCard.src = cardLink;
 
   cardName.appendChild(infoName);
   divInfo.appendChild(cardName);
   divInfo.appendChild(buttonLike);
   divCard.appendChild(imgCard);
+  divCard.appendChild(buttonDelete);
   divCard.appendChild(divInfo);
   elementSection.prepend(divCard);
+
+  const like = document.querySelector(".card__like");
+  like.addEventListener("click", (evt) => {
+    evt.target.classList.toggle("card__like_active");
+  });
 }
 function handleAddFormSubmit(evt) {
   evt.preventDefault();

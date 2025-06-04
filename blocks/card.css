@@ -50,3 +50,32 @@
   opacity: 0.5;
   transition: 0.3s;
 }
+
+.card__like:hover {
+  transform: scale(1.3);
+}
+
+.card__like_active {
+  opacity: 1;
+  background-image: url("/images/like_active.svg");
+}
+
+.card__delete {
+  position: relative;
+  width: 19px;
+  height: 18px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  background-image: url("/images/Trash.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  top: -270px;
+  left: 245px;
+  transition: 0.3s;
+}
+
+.card__delete:hover {
+  transform: scale(1.3);
+}

@@ -103,6 +103,10 @@ function createCard(cardTitle, cardLink) {
   like.addEventListener("click", (evt) => {
     evt.target.classList.toggle("card__like_active");
   });
+  const deleteListener = document.querySelector(".card__delete");
+  deleteListener.addEventListener("click", () => {
+    divCard.remove();
+  });
 }
 function handleAddFormSubmit(evt) {
   evt.preventDefault();

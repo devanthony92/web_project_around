@@ -42,4 +42,11 @@
   border: unset;
   background-color: #fff;
   cursor: pointer;
+  background-image: url("/images/like.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  border: none;
+  opacity: 0.5;
+  transition: 0.3s;
 }

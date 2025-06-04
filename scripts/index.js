@@ -4,7 +4,6 @@ let button_close = document.querySelector("#formEditButtonClose");
 let button_closeAdd = document.querySelector("#addPlaceButtonClose");
 let button_save = document.querySelector("#formEditButtonSave");
 let button_save_place = document.querySelector("#ButtonSavePlace");
-let like = document.querySelector(".card__like");
 let dialog = document.querySelector("#formEditPopup");
 let addPLace = document.querySelector("#popupAddPlace");
 let name_profile = document.querySelector("#profileName");
@@ -19,11 +18,43 @@ let elementSection = document.querySelector("#elementsSection");
 
 input_name.placeholder = name_profile.textContent;
 input_about.placeholder = about__profile.textContent;
-
+function createInitialCards() {
+  const initialCards = [
+    {
+      name: "Valle de Yosemite",
+      link: "images/place1.jpg",
+    },
+    {
+      name: "Lago Louise",
+      link: "images/place2.jpg",
+    },
+    {
+      name: "Montañas Calvas",
+      link: "images/place3.jpg",
+    },
+    {
+      name: "Latemar",
+      link: "images/place4.jpg",
+    },
+    {
+      name: "Parque Nacional de la Vanoise",
+      link: "images/place5.jpg",
+    },
+    {
+      name: "Lago di Braies",
+      link: "images/place6.jpg",
+    },
+  ];
+  initialCards.forEach((element) => {
+    createCard(element.name, element.link);
+  });
+}
 function open_dialog() {
   dialog.classList.add("dialog__opened");
 }
 function closeAddFuntion() {
+  input_title.value = "";
+  input_link.value = "";
   addPLace.classList.remove("dialog__opened");
 }
 function handleProfileFormSubmit(evt) {
@@ -43,32 +74,39 @@ function checkInputFilled() {
     button_save.classList.remove("dialog__button-save-filled");
   }
 }
-function createCard() {
+function createCard(cardTitle, cardLink) {
   const divCard = document.createElement("div");
   const imgCard = document.createElement("img");
-  const imgLike = document.createElement("img");
   const divInfo = document.createElement("div");
   const cardName = document.createElement("h3");
-  const infoName = document.createTextNode("Hola, mundo");
+  const infoName = document.createTextNode(cardTitle);
   const buttonLike = document.createElement("button");
 
   divCard.classList.add("card");
   imgCard.classList.add("card__img");
-  imgLike.classList.add("card__like-logo");
   divInfo.classList.add("card__container");
   cardName.classList.add("card__name");
   buttonLike.classList.add("card__like");
-  imgCard.src = "images/place1.jpg";
-  imgLike.src = "images/like.svg";
-  imgLike.alt = "like logo";
+  imgCard.src = cardLink;
 
-  buttonLike.appendChild(imgLike);
   cardName.appendChild(infoName);
   divInfo.appendChild(cardName);
   divInfo.appendChild(buttonLike);
   divCard.appendChild(imgCard);
   divCard.appendChild(divInfo);
   elementSection.prepend(divCard);
+}
+function handleAddFormSubmit(evt) {
+  evt.preventDefault();
+  if (input_title.value.trim() != "") {
+    var1 = input_title.value;
+    console.log(var1);
+  }
+  if (input_link.value.trim() != "") {
+    var2 = input_link.value;
+    console.log(var2);
+  }
+  createCard(var1, var2);
   closeAddFuntion();
 }
 
@@ -86,4 +124,6 @@ button_add.addEventListener("click", function () {
   addPLace.classList.add("dialog__opened");
 });
 button_closeAdd.addEventListener("click", closeAddFuntion);
-button_save_place.addEventListener("click", createCard);
+button_save_place.addEventListener("click", handleAddFormSubmit);
+
+createInitialCards();

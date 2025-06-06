@@ -6,6 +6,7 @@ const button_save = document.querySelector("#formEditButtonSave");
 const button_save_place = document.querySelector("#ButtonSavePlace");
 const dialog = document.querySelector("#formEditPopup");
 const addPLace = document.querySelector("#popupAddPlace");
+const showPopupImg = document.querySelector("#containerPopupImage");
 const popupImg = document.querySelector("#popupImage");
 const name_profile = document.querySelector("#profileName");
 const about__profile = document.querySelector("#profileProfesion");
@@ -53,12 +54,12 @@ function createInitialCards() {
   });
 }
 function open_dialog() {
-  dialog.classList.add("dialog__opened");
+  dialog.classList.add("popup__opened");
 }
 function closeAddFuntion() {
   input_title.value = "";
   input_link.value = "";
-  addPLace.classList.remove("dialog__opened");
+  addPLace.classList.remove("popup__opened");
 }
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -68,7 +69,7 @@ function handleProfileFormSubmit(evt) {
   if (input_about.value != "") {
     about__profile.textContent = input_about.value;
   }
-  dialog.classList.remove("dialog__opened");
+  dialog.classList.remove("popup__opened");
 }
 function checkInputFilled() {
   if (input_name.value.trim() != "" || input_about.value.trim() != "") {
@@ -84,7 +85,10 @@ function createCard(cardTitle, cardLink) {
   const nameCard = cloneCard.querySelector(".card__name");
 
   imgCard.src = cardLink;
+
   nameCard.textContent = cardTitle;
+  console.log(cardTitle);
+  imgCard.alt = "Fotografia de " + cardTitle + ", un hermoso lugar";
   elementSection.prepend(cloneCard);
 
   const like = document.querySelector(".card__like");
@@ -102,37 +106,37 @@ function createCard(cardTitle, cardLink) {
       popupImg.removeChild(popupImg.firstChild);
     }
     createImgPopup(evt.target.parentNode);
-    popupImg.classList.add("dialog__opened");
+    showPopupImg.classList.add("popup__opened");
   });
 }
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
   if (input_title.value.trim() != "") {
-    var1 = input_title.value;
-    console.log(var1);
+    titleValue = input_title.value;
+    console.log(titleValue);
   }
   if (input_link.value.trim() != "") {
-    var2 = input_link.value;
-    console.log(var2);
+    linkValue = input_link.value;
+    console.log(linkValue);
   }
-  createCard(var1, var2);
+  createCard(titleValue, linkValue);
   closeAddFuntion();
 }
 
-function createImgPopup(var1) {
+function createImgPopup(nodeImagePopup) {
   const cloneImage = imageTemplate.content.cloneNode(true);
-  const imgFullScr = cloneImage.querySelector(".popup__image_full");
-  const nameImage = cloneImage.querySelector(".popup__nameImage");
+  const imgFullScr = cloneImage.querySelector(".dialog__image_full");
+  const nameImage = cloneImage.querySelector(".dialog__nameImage");
   const btnClose = cloneImage.querySelector(".dialog__cerrar-img");
-  const Name = var1.querySelector(".card__name");
-  const Link = var1.querySelector(".card__img");
+  const Name = nodeImagePopup.querySelector(".card__name");
+  const Link = nodeImagePopup.querySelector(".card__img");
   nameImage.textContent = Name.textContent;
   imgFullScr.src = Link.src;
 
   popupImg.appendChild(cloneImage);
   console.log(popupImg.childNodes);
   btnClose.addEventListener("click", () => {
-    popupImg.classList.remove("dialog__opened");
+    showPopupImg.classList.remove("popup__opened");
   });
 }
 
@@ -143,11 +147,11 @@ button_close.addEventListener("click", function () {
   input_name.value = "";
   input_about.value = "";
   button_save.classList.remove("dialog__button-save-filled");
-  dialog.classList.remove("dialog__opened");
+  dialog.classList.remove("popup__opened");
 });
 button_save.addEventListener("click", handleProfileFormSubmit);
 button_add.addEventListener("click", function () {
-  addPLace.classList.add("dialog__opened");
+  addPLace.classList.add("popup__opened");
 });
 button_closeAdd.addEventListener("click", closeAddFuntion);
 button_save_place.addEventListener("click", handleAddFormSubmit);

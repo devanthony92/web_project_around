@@ -36,7 +36,6 @@
 .card__like {
   width: 24px;
   height: 24px;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   border: unset;

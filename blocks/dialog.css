@@ -1,5 +1,4 @@
 .dialog {
-  display: none;
   width: 430px;
   height: 330px;
   border: none;
@@ -7,10 +6,11 @@
   opacity: 100%;
   border-radius: 5%;
   padding: 35px;
-}
-
-.dialog__opened {
-  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
 }
 
 .dialog__form {
@@ -88,6 +88,37 @@
 
 .dialog__cerrar:hover {
   opacity: 60%;
+}
+
+.dialog__image {
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  justify-content: center;
+  max-width: fit-content;
+  padding: 0;
+  border: none;
+  margin: auto;
+}
+
+.dialog__image_full {
+  border-radius: 20px;
+  min-width: 40vw;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.dialog__nameImage {
+  margin: 10px 0 0 10px;
+  color: #fff;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  text-shadow: 1px 1px black;
 }
 
 @media screen and (max-width: 579px) {

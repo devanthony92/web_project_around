@@ -49,68 +49,82 @@
       <footer class="footer">
         <p class="footer__copyright">&#169; 2025 Around The U.S.</p>
       </footer>
-      <dialog class="popup dialog" id="formEditPopup">
-        <h3 class="dialog__title">Editar perfil</h3>
-        <button class="dialog__cerrar" id="formEditButtonClose">
-          <img class="dialog__cerrar-img" src="images/Close_Icon.png" alt="" />
-        </button>
-        <form action="#" class="dialog__form" id="formEdit">
-          <input
-            id="inputEditName"
-            type="text"
-            class="dialog__input-name"
-            placeholder="Nombre"
-          />
-          <input
-            id="inputEditAbout"
-            type="text"
-            class="dialog__input-about"
-            placeholder="Acerca de mí"
-          />
-          <button
-            type="submit"
-            class="dialog__button-save"
-            id="formEditButtonSave"
-          >
-            Guardar
+      <dialog class="popup" id="formEditPopup">
+        <div class="dialog">
+          <h3 class="dialog__title">Editar perfil</h3>
+          <button class="dialog__cerrar" id="formEditButtonClose">
+            <img
+              class="dialog__cerrar-img"
+              src="images/Close_Icon.png"
+              alt=""
+            />
           </button>
-        </form>
+          <form action="#" class="dialog__form" id="formEdit">
+            <input
+              id="inputEditName"
+              type="text"
+              class="dialog__input-name"
+              placeholder="Nombre"
+            />
+            <input
+              id="inputEditAbout"
+              type="text"
+              class="dialog__input-about"
+              placeholder="Acerca de mí"
+            />
+            <button
+              type="submit"
+              class="dialog__button-save"
+              id="formEditButtonSave"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
       </dialog>
-      <dialog class="popup dialog" id="popupAddPlace">
-        <h3 class="dialog__title">Nuevo Lugar</h3>
-        <button class="dialog__cerrar" id="addPlaceButtonClose">
-          <img class="dialog__cerrar-img" src="images/Close_Icon.png" alt="" />
-        </button>
-        <form action="#" class="dialog__form" id="formAddPlace">
-          <input
-            id="inputAddTitle"
-            type="text"
-            class="dialog__input-name"
-            placeholder="Titulo"
-          />
-          <input
-            id="inputAddlink"
-            type="text"
-            class="dialog__input-about"
-            placeholder="Enlace a la imagen"
-          />
-          <button
-            id="ButtonSavePlace"
-            type="submit"
-            class="dialog__button-save dialog__button-save-filled"
-          >
-            Crear
+      <dialog class="popup" id="popupAddPlace">
+        <div class="dialog">
+          <h3 class="dialog__title">Nuevo Lugar</h3>
+          <button class="dialog__cerrar" id="addPlaceButtonClose">
+            <img
+              class="dialog__cerrar-img"
+              src="images/Close_Icon.png"
+              alt=""
+            />
           </button>
-        </form>
+          <form action="#" class="dialog__form" id="formAddPlace">
+            <input
+              id="inputAddTitle"
+              type="text"
+              class="dialog__input-name"
+              placeholder="Titulo"
+            />
+            <input
+              id="inputAddlink"
+              type="text"
+              class="dialog__input-about"
+              placeholder="Enlace a la imagen"
+            />
+            <button
+              id="ButtonSavePlace"
+              type="submit"
+              class="dialog__button-save dialog__button-save-filled"
+            >
+              Crear
+            </button>
+          </form>
+        </div>
       </dialog>
-      <dialog class="popup popup__image" id="popupImage"></dialog>
+      <dialog class="popup" id="containerPopupImage">
+        <div class="dialog__image" id="popupImage"></div>
+      </dialog>
     </div>
     <template id="templateImage">
       <button class="dialog__cerrar">
         <img class="dialog__cerrar-img" src="images/Close_Icon.png" />
       </button>
-      <img class="popup__image_full" src="" alt="" />
-      <h3 class="popup__nameImage"></h3>
+      <img class="dialog__image_full" src="" alt="" />
+      <h3 class="dialog__nameImage"></h3>
     </template>
     <template id="templateCard"
       ><div class="card">

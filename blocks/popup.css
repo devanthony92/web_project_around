@@ -12,30 +12,3 @@
 .popup__opened {
   display: block;
 }
-
-/*
-.popup__image {
-  justify-content: center;
-  max-width: fit-content;
-  padding: 0;
-  border: none;
-  margin: auto;
-  background-color: transparent;
-}
-
-.popup__image_full {
-  border-radius: 20px;
-  min-width: 40vw;
-  max-width: 75vw;
-  max-height: 75vh;
-}
-
-.popup__nameImage {
-  margin: 10px 0 0 10px;
-  color: #fff;
-  font-family: Inter;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  text-shadow: 1px 1px black;
-}

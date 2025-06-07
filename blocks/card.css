@@ -7,7 +7,9 @@
 }
 
 .card__img {
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-opaco */
   width: 280px;
+  min-height: 280px;
   height: 280px;
 }
 
@@ -38,7 +40,6 @@
   height: 24px;
   display: flex;
   justify-content: center;
-  border: unset;
   background-color: #fff;
   cursor: pointer;
   background-image: url("/images/like.svg");

@@ -69,6 +69,7 @@
               minlength="2"
               maxlength="40"
             />
+            <span id="inputEditName-error" class="inputEditName-error"> </span>
             <input
               id="inputEditAbout"
               type="text"
@@ -78,6 +79,8 @@
               minlength="2"
               maxlength="200"
             />
+            <span id="inputEditAbout-error" class="inputEditAbout-error">
+            </span>
             <button
               type="submit"
               class="dialog__button-save"
@@ -102,15 +105,21 @@
             <input
               id="inputAddTitle"
               type="text"
-              class="dialog__input-name"
+              class="dialog__input dialog__input-name"
               placeholder="Titulo"
+              required
+              minlength="2"
+              maxlength="30"
             />
+            <span id="inputAddTitle-error" class="inputAddTitle-error"> </span>
             <input
               id="inputAddlink"
-              type="text"
-              class="dialog__input-about"
+              class="dialog__input dialog__input-about"
               placeholder="Enlace a la imagen"
+              required
+              type="url"
             />
+            <span id="inputAddlink-error" class="inputAddlink-error"> </span>
             <button
               id="ButtonSavePlace"
               type="submit"

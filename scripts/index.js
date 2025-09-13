@@ -20,8 +20,8 @@ const cardTemplate = document.querySelector("#templateCard");
 const imageTemplate = document.querySelector("#templateImage");
 const elementSection = document.querySelector("#elementsSection");
 
-input_name.placeholder = name_profile.textContent;
-input_about.placeholder = about__profile.textContent;
+input_name.value = name_profile.textContent.trim();
+input_about.value = about__profile.textContent.trim();
 
 function createInitialCards() {
   const initialCards = [
@@ -54,16 +54,34 @@ function createInitialCards() {
     createCard(element.name, element.link);
   });
 }
-function open_dialog() {
+function openDialogEdit() {
   dialog.classList.add("popup__opened");
 }
+function openDialogAdd() {
+  addPLace.classList.add("popup__opened");
+}
 function closeAddFuntion() {
-  input_title.value = "";
-  input_link.value = "";
+  resetCloseAdd();
   addPLace.classList.remove("popup__opened");
 }
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
+function resetCloseAdd() {
+  input_title.value = "";
+  input_link.value = "";
+  hideInputError(form__addPLace, input_title);
+  hideInputError(form__addPLace, input_link);
+}
+function closeEdit() {
+  resetCloseEdit();
+  button_save.classList.remove("dialog__button-save-filled");
+  dialog.classList.remove("popup__opened");
+}
+function resetCloseEdit() {
+  input_name.value = name_profile.textContent.trim();
+  input_about.value = about__profile.textContent.trim();
+  hideInputError(dialog__form, input_name);
+  hideInputError(dialog__form, input_about);
+}
+function handleProfileFormSubmit() {
   if (input_name.value != "") {
     name_profile.textContent = input_name.value;
   }
@@ -110,8 +128,7 @@ function createCard(cardTitle, cardLink) {
     showPopupImg.classList.add("popup__opened");
   });
 }
-function handleAddFormSubmit(evt) {
-  evt.preventDefault();
+function handleAddFormSubmit() {
   if (input_title.value.trim() != "") {
     titleValue = input_title.value;
     //    console.log(titleValue);
@@ -143,24 +160,19 @@ function createImgPopup(nodeImagePopup) {
 ////////////////////////////////////////////////////////////////////////////////
 //    VALIDATION    //
 ///////////////////////////////////////////////////////////////////////////////
-const formElement = document.querySelector(".dialog__form");
-const formInput = formElement.querySelector(".dialog__input");
 
 function showInputError(formElement, inputElement, errorMessage) {
-  // Encuentra el elemento del mensaje de error dentro de la propia función
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  // El resto permanece intacto
   inputElement.classList.add("dialog__input_type_error");
   errorElement.textContent = errorMessage;
   errorElement.classList.add("dialog__input_error_active");
 }
 
 function hideInputError(formElement, inputElement) {
-  // Encuentra el elemento del mensaje de error
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  // El resto permanece intacto
   inputElement.classList.remove("dialog__input_type_error");
   errorElement.classList.remove("dialog__input_error_active");
+  errorElement.textContent = "";
 }
 
 function isValid(formElement, inputElement) {
@@ -171,25 +183,35 @@ function isValid(formElement, inputElement) {
   }
 }
 
-formElement.addEventListener("submit", function (evt) {
-  // Cancela el comportamiento del navegador por defecto
-});
-formInput.addEventListener("input", isValid(formElement, formInput));
+function setEventListeners(formElement) {
+  const inputList = Array.from(formElement.querySelectorAll(".dialog__input"));
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", () => {
+      isValid(formElement, inputElement);
+    });
+  });
+}
+
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll(".dialog__form"));
+
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+    setEventListeners(formElement);
+  });
+}
+
 //////////////////////////////////////////////////////////////////////////////////
-button_edit.addEventListener("click", open_dialog);
+button_edit.addEventListener("click", openDialogEdit);
 input_name.addEventListener("input", checkInputFilled);
 input_about.addEventListener("input", checkInputFilled);
-button_close.addEventListener("click", function () {
-  input_name.value = "";
-  input_about.value = "";
-  button_save.classList.remove("dialog__button-save-filled");
-  dialog.classList.remove("popup__opened");
-});
+button_close.addEventListener("click", closeEdit);
 button_save.addEventListener("click", handleProfileFormSubmit);
-button_add.addEventListener("click", function () {
-  addPLace.classList.add("popup__opened");
-});
+button_add.addEventListener("click", openDialogAdd);
 button_closeAdd.addEventListener("click", closeAddFuntion);
 button_save_place.addEventListener("click", handleAddFormSubmit);
 
 createInitialCards();
+enableValidation();

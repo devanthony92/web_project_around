@@ -63,14 +63,20 @@
             <input
               id="inputEditName"
               type="text"
-              class="dialog__input-name"
+              class="dialog__input dialog__input-name"
               placeholder="Nombre"
+              required
+              minlength="2"
+              maxlength="40"
             />
             <input
               id="inputEditAbout"
               type="text"
-              class="dialog__input-about"
+              class="dialog__input dialog__input-about"
               placeholder="Acerca de mí"
+              required
+              minlength="2"
+              maxlength="200"
             />
             <button
               type="submit"

@@ -42,7 +42,7 @@
   justify-content: center;
   background-color: #fff;
   cursor: pointer;
-  background-image: url("/images/like.svg");
+  background-image: url("../images/like.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -57,7 +57,7 @@
 
 .card__like_active {
   opacity: 1;
-  background-image: url("/images/like_active.svg");
+  background-image: url("../images/like_active.svg");
 }
 
 .card__delete {
@@ -67,7 +67,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  background-image: url("/images/Trash.png");
+  background-image: url("../images/Trash.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;

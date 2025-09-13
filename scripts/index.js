@@ -22,6 +22,7 @@ const elementSection = document.querySelector("#elementsSection");
 
 input_name.placeholder = name_profile.textContent;
 input_about.placeholder = about__profile.textContent;
+
 function createInitialCards() {
   const initialCards = [
     {
@@ -87,7 +88,7 @@ function createCard(cardTitle, cardLink) {
   imgCard.src = cardLink;
 
   nameCard.textContent = cardTitle;
-  console.log(cardTitle);
+  //  console.log(cardTitle);
   imgCard.alt = "Fotografia de " + cardTitle + ", un hermoso lugar";
   elementSection.prepend(cloneCard);
 
@@ -113,11 +114,11 @@ function handleAddFormSubmit(evt) {
   evt.preventDefault();
   if (input_title.value.trim() != "") {
     titleValue = input_title.value;
-    console.log(titleValue);
+    //    console.log(titleValue);
   }
   if (input_link.value.trim() != "") {
     linkValue = input_link.value;
-    console.log(linkValue);
+    //    console.log(linkValue);
   }
   createCard(titleValue, linkValue);
   closeAddFuntion();
@@ -134,12 +135,47 @@ function createImgPopup(nodeImagePopup) {
   imgFullScr.src = Link.src;
 
   popupImg.appendChild(cloneImage);
-  console.log(popupImg.childNodes);
+  //  console.log(popupImg.childNodes);
   btnClose.addEventListener("click", () => {
     showPopupImg.classList.remove("popup__opened");
   });
 }
+////////////////////////////////////////////////////////////////////////////////
+//    VALIDATION    //
+///////////////////////////////////////////////////////////////////////////////
+const formElement = document.querySelector(".dialog__form");
+const formInput = formElement.querySelector(".dialog__input");
 
+function showInputError(formElement, inputElement, errorMessage) {
+  // Encuentra el elemento del mensaje de error dentro de la propia función
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  // El resto permanece intacto
+  inputElement.classList.add("dialog__input_type_error");
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add("dialog__input_error_active");
+}
+
+function hideInputError(formElement, inputElement) {
+  // Encuentra el elemento del mensaje de error
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  // El resto permanece intacto
+  inputElement.classList.remove("dialog__input_type_error");
+  errorElement.classList.remove("dialog__input_error_active");
+}
+
+function isValid(formElement, inputElement) {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+}
+
+formElement.addEventListener("submit", function (evt) {
+  // Cancela el comportamiento del navegador por defecto
+});
+formInput.addEventListener("input", isValid(formElement, formInput));
+//////////////////////////////////////////////////////////////////////////////////
 button_edit.addEventListener("click", open_dialog);
 input_name.addEventListener("input", checkInputFilled);
 input_about.addEventListener("input", checkInputFilled);

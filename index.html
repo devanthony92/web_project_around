@@ -69,7 +69,9 @@
               minlength="2"
               maxlength="40"
             />
-            <span id="inputEditName-error" class="inputEditName-error"> </span>
+            <span id="inputEditName-error" class="inputEditName-error"
+              >Error</span
+            >
             <input
               id="inputEditAbout"
               type="text"
@@ -79,9 +81,11 @@
               minlength="2"
               maxlength="200"
             />
-            <span id="inputEditAbout-error" class="inputEditAbout-error">
+            <span id="inputEditAbout-error" class="inputEditAbout-error"
+              >Error
             </span>
             <button
+              disabled
               type="submit"
               class="dialog__button-save"
               id="formEditButtonSave"
@@ -111,7 +115,9 @@
               minlength="2"
               maxlength="30"
             />
-            <span id="inputAddTitle-error" class="inputAddTitle-error"> </span>
+            <span id="inputAddTitle-error" class="inputAddTitle-error"
+              >Error</span
+            >
             <input
               id="inputAddlink"
               class="dialog__input dialog__input-about"
@@ -119,11 +125,14 @@
               required
               type="url"
             />
-            <span id="inputAddlink-error" class="inputAddlink-error"> </span>
+            <span id="inputAddlink-error" class="inputAddlink-error"
+              >Error</span
+            >
             <button
+              disabled
               id="ButtonSavePlace"
               type="submit"
-              class="dialog__button-save dialog__button-save-filled"
+              class="dialog__button-save"
             >
               Crear
             </button>
@@ -131,7 +140,7 @@
         </div>
       </dialog>
       <dialog class="popup" id="containerPopupImage">
-        <div class="dialog__image" id="popupImage"></div>
+        <div class="dialog dialog__image" id="popupImage"></div>
       </dialog>
     </div>
     <template id="templateImage">
@@ -152,5 +161,6 @@
       </div>
     </template>
     <script src="scripts/index.js"></script>
+    <script src="scripts/validate.js"></script>
   </body>
 </html>

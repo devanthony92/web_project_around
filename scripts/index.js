@@ -69,10 +69,11 @@ function resetCloseAdd() {
   input_link.value = "";
   hideInputError(form__addPLace, input_title);
   hideInputError(form__addPLace, input_link);
+  button_save_place.classList.remove("dialog__button-save-filled");
+  button_save_place.disabled = true;
 }
 function closeEdit() {
   resetCloseEdit();
-  button_save.classList.remove("dialog__button-save-filled");
   dialog.classList.remove("popup__opened");
 }
 function resetCloseEdit() {
@@ -80,6 +81,17 @@ function resetCloseEdit() {
   input_about.value = about__profile.textContent.trim();
   hideInputError(dialog__form, input_name);
   hideInputError(dialog__form, input_about);
+  button_save.disabled = true;
+}
+function enableButton(formElement) {
+  const save_options = formElement.querySelector(".dialog__button-save");
+  save_options.classList.add("dialog__button-save-filled");
+  save_options.disabled = false;
+}
+function disabledButton(formElement) {
+  const save_options = formElement.querySelector(".dialog__button-save");
+  save_options.classList.remove("dialog__button-save-filled");
+  save_options.disabled = true;
 }
 function handleProfileFormSubmit() {
   if (input_name.value != "") {
@@ -89,13 +101,7 @@ function handleProfileFormSubmit() {
     about__profile.textContent = input_about.value;
   }
   dialog.classList.remove("popup__opened");
-}
-function checkInputFilled() {
-  if (input_name.value.trim() != "" || input_about.value.trim() != "") {
-    button_save.classList.add("dialog__button-save-filled");
-  } else {
-    button_save.classList.remove("dialog__button-save-filled");
-  }
+  button_save.disabled = true;
 }
 function createCard(cardTitle, cardLink) {
   const cloneCard = cardTemplate.content.cloneNode(true);
@@ -106,7 +112,6 @@ function createCard(cardTitle, cardLink) {
   imgCard.src = cardLink;
 
   nameCard.textContent = cardTitle;
-  //  console.log(cardTitle);
   imgCard.alt = "Fotografia de " + cardTitle + ", un hermoso lugar";
   elementSection.prepend(cloneCard);
 
@@ -131,16 +136,14 @@ function createCard(cardTitle, cardLink) {
 function handleAddFormSubmit() {
   if (input_title.value.trim() != "") {
     titleValue = input_title.value;
-    //    console.log(titleValue);
   }
   if (input_link.value.trim() != "") {
     linkValue = input_link.value;
-    //    console.log(linkValue);
   }
   createCard(titleValue, linkValue);
   closeAddFuntion();
+  button_save_place.disabled = true;
 }
-
 function createImgPopup(nodeImagePopup) {
   const cloneImage = imageTemplate.content.cloneNode(true);
   const imgFullScr = cloneImage.querySelector(".dialog__image_full");
@@ -152,66 +155,40 @@ function createImgPopup(nodeImagePopup) {
   imgFullScr.src = Link.src;
 
   popupImg.appendChild(cloneImage);
-  //  console.log(popupImg.childNodes);
   btnClose.addEventListener("click", () => {
     showPopupImg.classList.remove("popup__opened");
   });
 }
-////////////////////////////////////////////////////////////////////////////////
-//    VALIDATION    //
-///////////////////////////////////////////////////////////////////////////////
 
-function showInputError(formElement, inputElement, errorMessage) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("dialog__input_type_error");
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add("dialog__input_error_active");
-}
+function enableCloseFunction() {
+  const popUpList = Array.from(document.querySelectorAll(".popup"));
 
-function hideInputError(formElement, inputElement) {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("dialog__input_type_error");
-  errorElement.classList.remove("dialog__input_error_active");
-  errorElement.textContent = "";
-}
+  popUpList.forEach((popUpElement) => {
+    const over = popUpElement.querySelector(".dialog");
 
-function isValid(formElement, inputElement) {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-}
-
-function setEventListeners(formElement) {
-  const inputList = Array.from(formElement.querySelectorAll(".dialog__input"));
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", () => {
-      isValid(formElement, inputElement);
+    popUpElement.addEventListener("click", (pointer) => {
+      if (!over.contains(pointer.target)) {
+        closeAddFuntion();
+        closeEdit();
+        showPopupImg.classList.remove("popup__opened");
+      }
     });
   });
 }
 
-function enableValidation() {
-  const formList = Array.from(document.querySelectorAll(".dialog__form"));
-
-  formList.forEach((formElement) => {
-    formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
-    setEventListeners(formElement);
-  });
-}
-
-//////////////////////////////////////////////////////////////////////////////////
 button_edit.addEventListener("click", openDialogEdit);
-input_name.addEventListener("input", checkInputFilled);
-input_about.addEventListener("input", checkInputFilled);
 button_close.addEventListener("click", closeEdit);
 button_save.addEventListener("click", handleProfileFormSubmit);
 button_add.addEventListener("click", openDialogAdd);
 button_closeAdd.addEventListener("click", closeAddFuntion);
 button_save_place.addEventListener("click", handleAddFormSubmit);
-
+document.addEventListener("keydown", (event) => {
+  if (event.key == "Escape") {
+    closeAddFuntion();
+    closeEdit();
+    showPopupImg.classList.remove("popup__opened");
+  }
+});
 createInitialCards();
-enableValidation();
+
+enableCloseFunction();

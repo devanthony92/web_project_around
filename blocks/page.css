@@ -9,7 +9,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   font-family: Inter, Arial, sans-serif;
-  justify-items: center;
 }
 
 @media screen and (max-width: 880px) {

@@ -1,3 +1,10 @@
+import { FormValidator } from "./FormValidator.js";
+
+const formEdit = new FormValidator("#formEdit");
+formEdit._setEventListeners(".dialog__input");
+const formAdd = new FormValidator("#formAddPlace");
+formAdd._setEventListeners("#formAddPlace");
+
 const button_edit = document.querySelector("#mainProfileEdit");
 const button_add = document.querySelector("#addButton");
 const button_close = document.querySelector("#formEditButtonClose");
@@ -67,8 +74,8 @@ function closeAddFuntion() {
 function resetCloseAdd() {
   input_title.value = "";
   input_link.value = "";
-  hideInputError(form__addPLace, input_title);
-  hideInputError(form__addPLace, input_link);
+  formAdd._hideInputError(input_title);
+  formAdd._hideInputError(input_link);
   button_save_place.classList.remove("dialog__button-save-filled");
   button_save_place.disabled = true;
 }
@@ -79,8 +86,8 @@ function closeEdit() {
 function resetCloseEdit() {
   input_name.value = name_profile.textContent.trim();
   input_about.value = about__profile.textContent.trim();
-  hideInputError(dialog__form, input_name);
-  hideInputError(dialog__form, input_about);
+  formEdit._hideInputError(input_name);
+  formEdit._hideInputError(input_about);
   button_save.disabled = true;
 }
 function enableButton(formElement) {
@@ -159,7 +166,6 @@ function createImgPopup(nodeImagePopup) {
     showPopupImg.classList.remove("popup__opened");
   });
 }
-
 function enableCloseFunction() {
   const popUpList = Array.from(document.querySelectorAll(".popup"));
 
@@ -175,7 +181,6 @@ function enableCloseFunction() {
     });
   });
 }
-
 button_edit.addEventListener("click", openDialogEdit);
 button_close.addEventListener("click", closeEdit);
 button_save.addEventListener("click", handleProfileFormSubmit);
@@ -192,3 +197,5 @@ document.addEventListener("keydown", (event) => {
 createInitialCards();
 
 enableCloseFunction();
+
+export { disabledButton, enableButton };

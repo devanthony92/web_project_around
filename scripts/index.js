@@ -8,8 +8,8 @@ const elementSection = document.querySelector("#elementsSection");
 const config = {
   formSelector: ".dialog__form",
   inputSelector: ".dialog__input",
-  submitButtonSelector: ".dialog__button_submit",
-  inactiveButtonClass: "dialog__button_submit_disabled",
+  submitButtonSelector: ".dialog__button-submit",
+  inactiveButtonClass: "dialog__button-submit_disabled",
   inputErrorClass: "dialog__input_type_error",
   errorClass: "dialog__input_error_active",
 };

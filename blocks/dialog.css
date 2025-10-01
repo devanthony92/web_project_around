@@ -101,7 +101,7 @@
   visibility: visible;
 }
 
-.dialog__button_submit {
+.dialog__button-submit {
   width: 100%;
   height: 50px;
   border: 1px solid #000;
@@ -111,13 +111,13 @@
   cursor: pointer;
 }
 
-.dialog__button_submit_disabled {
+.dialog__button-submit_disabled {
   background-color: #fff;
   color: #c4c4c4;
   border: 1px solid #c4c4c4;
 }
 
-.dialog__button_submit:hover {
+.dialog__button-submit:hover {
   opacity: 80%;
 }
 .dialog__cerrar {

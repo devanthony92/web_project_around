@@ -29,7 +29,7 @@
             <h2 class="main__profile-name" id="profileName">
               Jacques Cousteau
             </h2>
-            <button class="main__profile-edit" id="mainProfileEdit">
+            <button class="main__profile-edit" id="editButton">
               <img src="images/edit__button.svg" alt="edit button" />
             </button>
           </div>
@@ -139,16 +139,16 @@
           </form>
         </div>
       </dialog>
-      <dialog class="popup" id="containerPopupImage">
-        <div class="dialog dialog__image" id="popupImage"></div>
-      </dialog>
+      <dialog class="popup" id="containerPopupImage"></dialog>
     </div>
     <template id="templateImage">
-      <button class="dialog__cerrar">
-        <img class="dialog__cerrar-img" src="images/Close_Icon.png" />
-      </button>
-      <img class="dialog__image_full" src="" alt="" />
-      <h3 class="dialog__nameImage"></h3>
+      <div class="dialog dialog__image" id="popupImage">
+        <button class="dialog__cerrar">
+          <img class="dialog__cerrar-img" src="images/Close_Icon.png" />
+        </button>
+        <img class="dialog__image_full" src="" alt="" />
+        <h3 class="dialog__nameImage"></h3>
+      </div>
     </template>
     <template id="templateCard"
       ><div class="card">

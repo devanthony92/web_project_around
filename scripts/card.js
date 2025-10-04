@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(name, link, templateSelector, handleImageClick) {
+  constructor({ name, link }, templateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
-    this._handleImageClick = handleImageClick;
+    this._handleCardClick = handleCardClick;
   }
 
   // Método privado: clona el template
@@ -22,7 +22,7 @@ export default class Card {
       this._handleDeleteClick()
     );
     this._imageElement.addEventListener("click", () =>
-      this._handleImageClick(this._name, this._link)
+      this._handleCardClick(this._name, this._link)
     );
   }
 
@@ -36,29 +36,6 @@ export default class Card {
     this._element = null;
   }
 
-  // _handleImageClick() {
-  //   const popup = document.querySelector("#containerPopupImage");
-  //   const popupContent = document.querySelector("#popupImage");
-  //   const template = document
-  //     .querySelector("#templateImage")
-  //     .content.cloneNode(true);
-
-  //   const imgFull = template.querySelector(".dialog__image_full");
-  //   const nameImage = template.querySelector(".dialog__nameImage");
-  //   const btnClose = template.querySelector(".dialog__cerrar-img");
-
-  //   imgFull.src = this._link;
-  //   imgFull.alt = this._name;
-  //   nameImage.textContent = this._name;
-
-  //   popupContent.innerHTML = "";
-  //   popupContent.append(template);
-  //   popup.classList.add("popup__opened");
-
-  //   btnClose.addEventListener("click", () =>
-  //     popup.classList.remove("popup__opened")
-  //   );
-  // }
   // Método público para generar la tarjeta
   generateCard() {
     this._element = this._getTemplate();

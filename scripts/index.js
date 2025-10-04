@@ -1,7 +1,7 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./card.js";
 import { openImage } from "./utils.js";
-
+import Section from "./Section.js";
 const elementSection = document.querySelector("#elementsSection");
 
 // configuracion de clases para FormValidatator
@@ -49,14 +49,11 @@ function createInitialCards() {
     },
   ];
   initialCards.forEach((element) => {
-    const card = new Card(
-      element.name,
-      element.link,
-      "#templateCard",
-      openImage
-    );
+    const card = new Card(element, "#templateCard", openImage);
     const cardElement = card.generateCard();
-    elementSection.prepend(cardElement);
+    const addCard = new Section({ items: cardElement }, "#elementsSection");
+    //elementSection.prepend(cardElement);
+    addCard.addItem();
   });
 }
 

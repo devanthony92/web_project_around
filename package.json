@@ -1,0 +1,22 @@
+{
+  "name": "web_project_around",
+  "version": "1.0.0",
+  "description": "project for my portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devanthony92/web_project_around.git"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Anthony Martinez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devanthony92/web_project_around/issues"
+  },
+  "homepage": "https://github.com/devanthony92/web_project_around#readme"
+}

@@ -1,3 +1,11 @@
+import {
+  cardSelector,
+  likeClassActive,
+  cardImage,
+  cardName,
+  cardLikeButton,
+  cardDeleteButton,
+} from "./constanst.js";
 export default class Card {
   constructor({ name, link }, templateSelector, handleCardClick) {
     this._name = name;
@@ -10,7 +18,7 @@ export default class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._templateSelector)
-      .content.querySelector(".card")
+      .content.querySelector(cardSelector)
       .cloneNode(true);
     return cardElement;
   }
@@ -28,7 +36,7 @@ export default class Card {
 
   // Métodos privados para los controladores
   _handleLikeClick() {
-    this._likeButton.classList.toggle("card__like_active");
+    this._likeButton.classList.toggle(likeClassActive);
   }
 
   _handleDeleteClick() {
@@ -39,10 +47,10 @@ export default class Card {
   // Método público para generar la tarjeta
   generateCard() {
     this._element = this._getTemplate();
-    this._imageElement = this._element.querySelector(".card__img");
-    this._nameElement = this._element.querySelector(".card__name");
-    this._likeButton = this._element.querySelector(".card__like");
-    this._deleteButton = this._element.querySelector(".card__delete");
+    this._imageElement = this._element.querySelector(cardImage);
+    this._nameElement = this._element.querySelector(cardName);
+    this._likeButton = this._element.querySelector(cardLikeButton);
+    this._deleteButton = this._element.querySelector(cardDeleteButton);
 
     this._imageElement.src = this._link;
     this._imageElement.alt = `Fotografía de ${this._name}`;

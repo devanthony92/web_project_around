@@ -1,8 +1,8 @@
 import FormValidator from "./FormValidator.js";
-import Card from "./card.js";
+import Card from "./Card.js";
 import { openImage } from "./utils.js";
 import Section from "./Section.js";
-const elementSection = document.querySelector("#elementsSection");
+import { formEditSelector, formAddSelector } from "./constanst.js";
 
 // configuracion de clases para FormValidatator
 const config = {
@@ -13,11 +13,10 @@ const config = {
   inputErrorClass: "dialog__input_type_error",
   errorClass: "dialog__input_error_active",
 };
-
 // Validación de formularios
-const formEdit = new FormValidator(config, "#formEdit");
+const formEdit = new FormValidator(config, formEditSelector);
 formEdit.enableValidation();
-const formAdd = new FormValidator(config, "#formAddPlace");
+const formAdd = new FormValidator(config, formAddSelector);
 formAdd.enableValidation();
 
 // Creación de tarjetas iniciales
@@ -52,11 +51,10 @@ function createInitialCards() {
     const card = new Card(element, "#templateCard", openImage);
     const cardElement = card.generateCard();
     const addCard = new Section({ items: cardElement }, "#elementsSection");
-    //elementSection.prepend(cardElement);
     addCard.addItem();
   });
 }
 
 createInitialCards();
 
-export { config, formAdd, formEdit };
+export { config };

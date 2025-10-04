@@ -2,6 +2,9 @@ import {
   openPopupClass,
   buttonCloseSelector,
   overPopupSelector,
+  formSelector,
+  inputSelector,
+  buttonSave,
 } from "./constanst.js";
 
 export class Popup {
@@ -86,30 +89,28 @@ export class PopupWithForm extends Popup {
   constructor(popupSelector, functionSubmit) {
     super(popupSelector);
     this._functionSubmit = functionSubmit;
-    this._buttonSave = this._popupElement.querySelector(
-      ".dialog__button-submit"
-    );
-    this._getInputValues();
+    this._buttonSave = this._popupElement.querySelector(buttonSave);
   }
-
   _getInputValues() {
     this._inputValues = Array.from(
-      this._popupElement.querySelectorAll(".dialog__input")
+      this._popupElement.querySelectorAll(inputSelector)
     );
-    this._inputValues.forEach((input) => {
-      console.log(input.value);
-    });
+    return this._inputValues;
   }
   openPopup() {
     super.openPopup();
+    this._formElement = this._popupElement.querySelector(formSelector);
   }
   closePopup() {
-    super.closePopup;
+    super.closePopup();
+    this._formElement.reset();
   }
   setEventListeners() {
-    this._buttonClose.addEventListener("click", () => {
+    super.setEventListeners();
+    this._buttonSave.addEventListener("click", (evt) => {
+      evt.preventDefault();
+      this._functionSubmit(this._getInputValues());
       this.closePopup();
     });
-    this._buttonSave;
   }
 }
